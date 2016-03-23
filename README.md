@@ -1,5 +1,4 @@
-TorBalancer
-===========
+# TorBalancer
 
 Balance traffic between multiple Tor clients.
 
@@ -15,16 +14,17 @@ HAProxy <--HTTP-->  DeleGate1 <--socks--> Tor1  <-->  Rendezvous Points
 ![Stats GUI](https://github.com/ahmia/TorBalancer/blob/master/stats.png)
 
 
-Setup httpTorBalancer
----------------------
+## Setup TorBalancer
 
 - Install HAProxy
 - Install DeleGate
 - Install Tor in Tor2web mode with fast Tor2webRendezvousPoints
 
+Tor2web mode and Tor2webRendezvousPoints selection is optional.
+
 If you want to use Tor to access public WWW sites then do not use Tor2web mode. Tor2web mode only allows connections to onion addresses.
 
-HAProxy and DeleGate
+### Install DeleGate
 
 ```sh
 $ mkdir delegate && cd delegate
@@ -33,18 +33,27 @@ $ echo "7f6dd1263538a260633bd5786271c0c28f23acf0b20f031b90b8163c9ca7be50  delega
 $ gzip -d < delegate.tar.gz | tar xfv -
 ```
 
+### Install HAProxy
+
 ```sh
 $ sudo apt-get install haproxy
 $ sudo ulimit -n 65536
+```
+
+## Start the system
+
+```sh
 $ bash opentors.sh
 ```
 
-Finally, you can test your HAProxy:
+## Finally, you can test your HAProxy:
 
 ```sh
 $ curl -x localhost:3128 http://msydqstlz2kzerdg.onion/
 $ http://localhost:5000/stats
 ```
+
+## Shutdown
 
 You can kill your Tors, DeleGates and HAProxy by
 
@@ -54,10 +63,11 @@ $ killall tor
 $ kill $(ps aux | grep 'delegate' | awk '{print $2}')
 ```
 
-Old way to setup with one Polipo proxy
---------------------------------------
+## Old way to setup with one Polipo proxy
 
-- No load balancing, one Tor + proxy instance
+- Tor + Polipo
+- No load balancing
+- One Tor + proxy instance
 
 ```sh
 $ sudo apt-get install polipo
