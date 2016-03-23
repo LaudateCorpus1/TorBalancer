@@ -34,6 +34,7 @@ $ gzip -d < delegate.tar.gz | tar xfv -
 
 ```sh
 $ sudo apt-get install haproxy
+$ sudo ulimit -n 65536
 $ bash opentors.sh
 ```
 
@@ -49,7 +50,7 @@ You can kill your Tors, DeleGates and HAProxy by
 ```sh
 $ killall haproxy
 $ killall tor
-$ killall delegates
+$ kill $(ps aux | grep 'delegate' | awk '{print $2}')
 ```
 
 Old way to setup with one Polipo proxy
