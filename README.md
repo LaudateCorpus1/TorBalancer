@@ -16,28 +16,8 @@ HAProxy <--HTTP-->  DeleGate1 <--socks--> Tor1  <-->  Rendezvous Points
 
 ## Setup TorBalancer
 
-- Install HAProxy
-- Install DeleGate
-- Install Tor in Tor2web mode with fast Tor2webRendezvousPoints
-
-Tor2web mode and Tor2webRendezvousPoints selection is optional.
-
-If you want to use Tor to access public WWW sites then do not use Tor2web mode. Tor2web mode only allows connections to onion addresses.
-
-### Install DeleGate
-
 ```sh
-$ mkdir delegate && cd delegate
-$ wget -O delegate.tar.gz http://www.delegate.org/anonftp/DeleGate/bin/linux/9.9.13/linux2.6-dg9_9_13.tar.gz
-$ echo "7f6dd1263538a260633bd5786271c0c28f23acf0b20f031b90b8163c9ca7be50  delegate.tar.gz" | sha256sum -c
-$ gzip -d < delegate.tar.gz | tar xfv -
-```
-
-### Install HAProxy
-
-```sh
-$ sudo apt-get install haproxy
-$ sudo ulimit -n 65536
+sudo ./install.sh
 ```
 
 ## Start the system
