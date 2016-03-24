@@ -16,6 +16,15 @@ HAProxy <--HTTP-->  DeleGate1 <--socks--> Tor1  <-->  Rendezvous Points
 
 ## Setup TorBalancer
 
+- Installer script will install HAProxy, DeleGate and Tor
+- You can install manually Tor in Tor2web mode
+- You can manually setup fast Tor2webRendezvousPoints
+
+Tor2web mode and Tor2webRendezvousPoints selection is optional.
+
+If you want to use Tor to access public WWW sites then do not use Tor2web mode. Tor2web mode only allows connections to onion addresses.
+
+
 ```sh
 sudo ./install.sh
 ```
