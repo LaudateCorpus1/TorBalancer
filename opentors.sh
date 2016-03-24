@@ -1,6 +1,6 @@
 #!/bin/bash
 base_socks_port=9050
-base_http_port=31000
+base_http_port=31700
 base_control_port=38118
 
 # Create data directory if it doesn't exist
@@ -26,3 +26,8 @@ do
 done
 
 haproxy -f rotating-tor-proxies.cfg
+
+echo "Delegate processes:"
+ps aux | grep delegate | grep dg | wc -l
+echo "Tor processes:"
+ps aux | grep tor | grep DataDirec | wc -l
