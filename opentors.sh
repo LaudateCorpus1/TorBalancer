@@ -1,7 +1,7 @@
 #!/bin/bash
 base_socks_port=9050
 base_http_port=31000
-base_control_port=8118
+base_control_port=38118
 
 # Create data directory if it doesn't exist
 if [ ! -d "data" ]; then
