@@ -5,7 +5,7 @@ set -euf -o pipefail
 release=`lsb_release -cs`
 
 setup_haproxy() {
-	if which haproxy > /dev/nullwhich haproxy > /dev/null; then
+	if which haproxy > /dev/null; then
 		echo "Skipping HAProxy because you have it installed"
 		return
 	fi
@@ -18,7 +18,7 @@ setup_haproxy() {
 
 setup_delegate() {
 	if [[ -x "delegate/dg9_9_13/DGROOT/bin/dg9_9_13" ]]; then
-		echo "Skipping Tor because you have it installed"
+		echo "Skipping Delegate because you have it installed"
 		return
 	fi
 	echo "Setting up DeleGate"
